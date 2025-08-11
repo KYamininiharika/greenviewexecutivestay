@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenView Executive Stay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph meta tags for sharing -->
+    <meta property="og:title" content="GreenView Executive Stay">
+    <meta property="og:description" content="Premium homestay at Plot No:370, Kaloji Chowrasta, Gachibowli, Hyderabad, Telangana. Spacious 2-share rooms with kitchen and balcony for ₹24,000/month.">
+    <meta property="og:image" content="C:/Users/91901/Downloads/hostel.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #222;
+            background: url('C:/Users/91901/Downloads/hostel.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .main-header {
+            background: rgba(46, 139, 87, 0.85);
+            color: #fff;
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem 1rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .address {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        nav {
+            background: rgba(255,255,255,0.9);
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav button {
+            background: #2e8b57;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        nav button.active, nav button:hover {
+            background: #ffd700;
+            color: #2e8b57;
+        }
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        section {
+            margin-bottom: 2.5rem;
+            background: rgba(255,255,255,0.92);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            padding: 2rem;
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        h2 {
+            color: #2e8b57;
+            margin-top: 0;
+        }
+        .gallery-grid {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .gallery-grid div {
+            flex: 1 1 220px;
+            text-align: center;
+        }
+        .gallery-grid img, .gallery-grid video {
+            width: 100%;
+            max-width: 220px;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 1px 4px rgba(44,62,80,0.06);
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .gallery-grid img:hover {
+            box-shadow: 0 4px 16px rgba(44,62,80,0.15);
+        }
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 2px 16px #000;
+        }
+        .lightbox:target {
+            display: flex;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+        form input, form textarea {
+            padding: 0.7rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        form button {
+            background: #2e8b57;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        form button:hover {
+            background: #246b45;
+        }
+        .reviews-list p {
+            background: #f0f5f3;
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.7rem;
+            font-size: 1rem;
+            position: relative;
+        }
+        .delete-review {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .admin-panel {
+            margin-bottom: 1rem;
+            background: #eafaf1;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .admin-panel input {
+            margin-right: 0.5rem;
+        }
+        footer {
+            background: rgba(46, 139, 87, 0.85);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            border-radius: 0 0 10px 10px;
+        }
+        @media (max-width: 700px) {
+            main {
+                padding: 0;
+            }
+            .gallery-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>GreenView Executive Stay</h1>
+        <p class="address">Plot No:370, Kaloji Chowrasta, Gachibowli, Hyderabad, Telangana</p>
+    </header>
+    <nav>
+        <button id="showGallery" class="active">Gallery</button>
+        <button id="showContact">Contact</button>
+        <button id="showReviews">Reviews</button>
+    </nav>
+    <main>
+        <section id="gallerySection" class="active">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div>
+                    <a href="#img1">
+                        <img src="C:/Users/91901/Downloads/room.jpg" alt="Room">
+                    </a>
+                    <p>
+                        <strong>2 Share Room</strong><br>
+                        Price: ₹24,000/month<br>
+                        Includes: Kitchen, Balcony
+                    </p>
+                </div>
+                <div>
+                    <a href="#img2">
+                        <img src="C:/Users/91901/Downloads/hostel.jpg" alt="Building">
+                    </a>
+                    <p>Elegant Building</p>
+                </div>
+            </div>
+            <!-- Lightbox modals -->
+            <div id="img1" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="C:/Users/91901/Downloads/room.jpg" alt="Room Full">
+            </div>
+            <div id="img2" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="C:/Users/91901/Downloads/hostel.jpg" alt="Building Full">
+            </div>
+        </section>
+        <section id="contactSection">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:greenviewstay@gmail.com">greenviewstay@gmail.com</a></p>
+            <p>Phone: <a href="tel:+917075866056">+91 7075866056</a></p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+        <section id="reviewsSection">
+            <h2>Reviews</h2>
+            <div class="admin-panel" id="adminPanel" style="display:none;">
+                <strong>Admin Panel:</strong>
+                <input type="password" id="adminPassword" placeholder="Enter admin password">
+                <button id="adminLogin">Login</button>
+                <span id="adminStatus"></span>
+            </div>
+            <form id="reviewForm">
+                <input type="email" id="reviewEmail" placeholder="Your Email" required>
+                <textarea id="reviewText" placeholder="Your Review" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+            <div class="reviews-list" id="reviewsList">
+                <!-- Reviews will be shown here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 GreenView Executive Stay. All rights reserved.
+    </footer>   
+    <script>
+        // Section switching
+        const galleryBtn = document.getElementById('showGallery');
+        const contactBtn = document.getElementById('showContact');
+        const reviewsBtn = document.getElementById('showReviews');
+        const gallerySection = document.getElementById('gallerySection');
+        const contactSection = document.getElementById('contactSection');
+        const reviewsSection = document.getElementById('reviewsSection');
+        const navBtns = [galleryBtn, contactBtn, reviewsBtn];
+        function showSection(section) {
+            [gallerySection, contactSection, reviewsSection].forEach(sec => sec.classList.remove('active'));
+            section.classList.add('active');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            if(section === gallerySection) galleryBtn.classList.add('active');
+            if(section === contactSection) contactBtn.classList.add('active');
+            if(section === reviewsSection) reviewsBtn.classList.add('active');
+        }
+        galleryBtn.onclick = () => showSection(gallerySection);
+        contactBtn.onclick = () => showSection(contactSection);
+        reviewsBtn.onclick = () => showSection(reviewsSection);
+
+        // Lightbox functionality
+        document.querySelectorAll('.gallery-grid a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.style.display = 'flex';
+            });
+        });
+        document.querySelectorAll('.lightbox-close').forEach(close => {
+            close.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.parentElement.style.display = 'none';
+            });
+        });
+
+        // Reviews functionality with admin management and email validation
+        let reviews = [
+            {text: "Wonderful stay and great hospitality!", email: "guest1@gmail.com"},
+            {text: "Clean rooms and friendly staff.", email: "guest2@yahoo.com"}
+        ];
+        let isAdmin = false;
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewsList = document.getElementById('reviewsList');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminPasswordInput = document.getElementById('adminPassword');
+        const adminLoginBtn = document.getElementById('adminLogin');
+        const adminStatus = document.getElementById('adminStatus');
+
+        function renderReviews() {
+            reviewsList.innerHTML = '';
+            reviews.forEach((review, idx) => {
+                const p = document.createElement('p');
+                p.textContent = `"${review.text}" - ${review.email}`;
+                if(isAdmin) {
+                    const delBtn = document.createElement('button');
+                    delBtn.textContent = '×';
+                    delBtn.className = 'delete-review';
+                    delBtn.title = 'Delete review';
+                    delBtn.onclick = () => {
+                        reviews.splice(idx, 1);
+                        renderReviews();
+                    };
+                    p.appendChild(delBtn);
+                }
+                reviewsList.appendChild(p);
+            });
+        }
+        renderReviews();
+
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('reviewEmail').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+
+            // Basic email format check
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Allowed domains (add more if needed)
+            const allowedDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
+            const emailDomain = email.split('@')[1];
+
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (!allowedDomains.includes(emailDomain)) {
+                alert('Please use a genuine email address (gmail, yahoo, outlook, hotmail).');
+                return;
+            }
+            if (text) {
+                reviews.push({text, email});
+                renderReviews();
+                reviewForm.reset();
+            }
+        });
+
+        // Admin panel show/hide
+        reviewsBtn.addEventListener('dblclick', function() {
+            adminPanel.style.display = 'block';
+        });
+
+        adminLoginBtn.addEventListener('click', function() {
+            // Simple password check (change 'admin123' to your password)
+            if(adminPasswordInput.value === 'admin123') {
+                isAdmin = true;
+                adminStatus.textContent = " (Admin mode ON)";
+                renderReviews();
+            } else {
+                adminStatus.textContent = " (Wrong password)";
+            }
+        });
+
+        // Contact form submission handling (for demonstration purposes)
+        document.querySelectorAll('section#contactSection form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Form submitted successfully!');
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>
